@@ -247,7 +247,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-14T20:35:47+08:00" content="2016-05-14">
+            <time itemprop="dateCreated" datetime="2016-05-14T23:50:28+08:00" content="2016-05-14">
               2016-05-14
             </time>
           </span>
@@ -278,7 +278,7 @@
         
           
             <hr>
-<p>title: 单元测试<br>date: 2016-05-14 20:35:47</p>
+<p>title: 单元测试<br>date: 2016-05-14 23:50:28</p>
 <p>在计算机编程中，<strong>单元测试</strong>（英语：Unit Testing）又称为<strong>模块测试</strong>, 是针对程序模块的最小单位来进行正确性检验的测试工作。程序单元是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。 – 维基百科</p>
 <p>使用单元测试以后，我们就没必要为了测试某个小模块去编译我们的程序，然后去等待模拟器启动然后到你需要验证的模块去。如果项目很大，编译要等很长时间</p>
 <p>####单元测试能节约我们的时间，提高开发效率，对于项目越大的效果越明显。</p>
@@ -294,42 +294,8 @@
 <p>测试文件名称自定义，可以删除自己创建，注意要继承自XCTestCase<br>通过Xcode的File-&gt;New-&gt;File-&gt;Source选择Unit Test Case Class来新建一个UserTests,注意要继承XCTestCase类。</p>
 <p>项目名+Test的.m文件里面默认有4个方法，这个文件里面主要做一些逻辑的测试。项目名+UITest的.m文件里默认有3个方法。这个文件里面主要做一些UI的测试。</p>
 <p>在讲解如何写测试方法前，先说说默认的方法的作用</p>
-<pre><code>//  MZToolsTest.m
-#import &lt;XCTest/XCTest.h&gt;
-
-@interface MZToolsTest : XCTestCase
-
-@end
-
-@implementation MZToolsTest
-//每个test方法执行前调用，在这个测试用例里进行一些通用的初始化工作
-- (void)setUp {
-[super setUp];
-// Put setup code here. This method is called before the invocation of each test method in the class.
-}
-
-//每个test方法执行后调用
-- (void)tearDown {
-// Put teardown code here. This method is called after the invocation of each test method in the class.
-[super tearDown];
-}
-
-//测试方法样例
-- (void)testExample {
-// This is an example of a functional test case.
-// Use XCTAssert and related functions to verify your tests produce the correct results.
-}
-
-//这个方法主要是做性能测试的，所谓性能测试，主要就是评估一段代码的运行时间。该方法就是性能测试方法的样例。
-- (void)testPerformanceExample {
-// This is an example of a performance test case.
-[self measureBlock:^{
-    // Put the code you want to measure the time of here.
-}];
-}
-
-@end
-</code></pre><p>测试用例方法非常简单，从testExample这个方法我们大概知道怎么写了，方法名只需要以test开头，是的，就是这么简单。<br>现在我们模拟登录这个功能来写一个登录模块的测试用例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//  MZToolsTest.m</span><br><span class="line">#import &lt;XCTest/XCTest.h&gt;</span><br><span class="line"></span><br><span class="line">@interface MZToolsTest : XCTestCase</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation MZToolsTest</span><br><span class="line">//每个test方法执行前调用，在这个测试用例里进行一些通用的初始化工作</span><br><span class="line">- (void)setUp &#123;</span><br><span class="line">   [super setUp];</span><br><span class="line">   // Put setup code here. This method is called before the invocation of each test method in the class.</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//每个test方法执行后调用</span><br><span class="line">- (void)tearDown &#123;</span><br><span class="line">   // Put teardown code here. This method is called after the invocation of each test method in the class.</span><br><span class="line">   [super tearDown];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//测试方法样例</span><br><span class="line">- (void)testExample &#123;</span><br><span class="line">   // This is an example of a functional test case.</span><br><span class="line">   // Use XCTAssert and related functions to verify your tests produce the correct results.</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//这个方法主要是做性能测试的，所谓性能测试，主要就是评估一段代码的运行时间。该方法就是性能测试方法的样例。</span><br><span class="line">- (void)testPerformanceExample &#123;</span><br><span class="line">   // This is an example of a performance test case.</span><br><span class="line">   [self measureBlock:^&#123;</span><br><span class="line">       // Put the code you want to measure the time of here.</span><br><span class="line">   &#125;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>测试用例方法非常简单，从testExample这个方法我们大概知道怎么写了，方法名只需要以test开头，是的，就是这么简单。<br>现在我们模拟登录这个功能来写一个登录模块的测试用例</p>
 <pre><code>#import &lt;Foundation/Foundation.h&gt;
 
 @interface User : NSObject
