@@ -84,27 +84,24 @@
 
 
 
-<meta name="description" content="date: 2016-05-18 22:52:03
-要实现这样一个需求：按照本地的CSS文件展示一串网络获取的带HTML格式的只有body部分的文本，需要自己拼写完整的HTML。除此之外，还需要禁用获取的HTML文本中自带的 &amp;lt; img &amp;gt; 标签自动加载，并把下载图片的操作放在native端来处理，并通过JS将图片在Cache中的地址返回给UIWebview。
-之所以要把图片操作放在n">
+<meta name="description" content="要实现这样一个需求：按照本地的CSS文件展示一串网络获取的带HTML格式的只有body部分的文本，需要自己拼写完整的HTML。除此之外，还需要禁用获取的HTML文本中自带的 &amp;lt; img &amp;gt; 标签自动加载，并把下载图片的操作放在native端来处理，并通过JS将图片在Cache中的地址返回给UIWebview。
+之所以要把图片操作放在native端做的好处在于：1、可以进行本地缓存，下次">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UIWebView与JS的交互">
 <meta property="og:url" content="http://yoursite.com/2016/05/18/UIWebView与JS的交互/index.html">
 <meta property="og:site_name" content="朱慕之的Blog">
-<meta property="og:description" content="date: 2016-05-18 22:52:03
-要实现这样一个需求：按照本地的CSS文件展示一串网络获取的带HTML格式的只有body部分的文本，需要自己拼写完整的HTML。除此之外，还需要禁用获取的HTML文本中自带的 &amp;lt; img &amp;gt; 标签自动加载，并把下载图片的操作放在native端来处理，并通过JS将图片在Cache中的地址返回给UIWebview。
-之所以要把图片操作放在n">
+<meta property="og:description" content="要实现这样一个需求：按照本地的CSS文件展示一串网络获取的带HTML格式的只有body部分的文本，需要自己拼写完整的HTML。除此之外，还需要禁用获取的HTML文本中自带的 &amp;lt; img &amp;gt; 标签自动加载，并把下载图片的操作放在native端来处理，并通过JS将图片在Cache中的地址返回给UIWebview。
+之所以要把图片操作放在native端做的好处在于：1、可以进行本地缓存，下次">
 <meta property="og:image" content="http://kittenyang.com/content/images/2015/Aug/Screen-Shot-2015-08-02-at-01-35-51.png">
 <meta property="og:image" content="http://kittenyang.com/content/images/2015/Aug/-----2015-08-07---3-14-34.png">
 <meta property="og:image" content="http://kittenyang.com/content/images/2015/Aug/objs.gif">
 <meta property="og:image" content="http://kittenyang.com/content/images/2015/Aug/-----2015-08-07---4-33-58.png">
 <meta property="og:image" content="http://kittenyang.com/content/images/2015/Aug/-----2015-08-07---4-36-30.png">
-<meta property="og:updated_time" content="2016-05-18T15:29:37.000Z">
+<meta property="og:updated_time" content="2016-05-18T15:30:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UIWebView与JS的交互">
-<meta name="twitter:description" content="date: 2016-05-18 22:52:03
-要实现这样一个需求：按照本地的CSS文件展示一串网络获取的带HTML格式的只有body部分的文本，需要自己拼写完整的HTML。除此之外，还需要禁用获取的HTML文本中自带的 &amp;lt; img &amp;gt; 标签自动加载，并把下载图片的操作放在native端来处理，并通过JS将图片在Cache中的地址返回给UIWebview。
-之所以要把图片操作放在n">
+<meta name="twitter:description" content="要实现这样一个需求：按照本地的CSS文件展示一串网络获取的带HTML格式的只有body部分的文本，需要自己拼写完整的HTML。除此之外，还需要禁用获取的HTML文本中自带的 &amp;lt; img &amp;gt; 标签自动加载，并把下载图片的操作放在native端来处理，并通过JS将图片在Cache中的地址返回给UIWebview。
+之所以要把图片操作放在native端做的好处在于：1、可以进行本地缓存，下次">
 <meta name="twitter:image" content="http://kittenyang.com/content/images/2015/Aug/Screen-Shot-2015-08-02-at-01-35-51.png">
 
 
@@ -283,8 +280,7 @@
       
 
       
-        <p>date: 2016-05-18 22:52:03</p>
-<p>要实现这样一个需求：<strong>按照本地的CSS文件展示一串网络获取的带HTML格式的只有body部分的文本，需要自己拼写完整的HTML。除此之外，还需要禁用获取的HTML文本中自带的 &lt; img &gt; 标签自动加载，并把下载图片的操作放在native端来处理，并通过JS将图片在Cache中的地址返回给UIWebview</strong>。</p>
+        <p>要实现这样一个需求：<strong>按照本地的CSS文件展示一串网络获取的带HTML格式的只有body部分的文本，需要自己拼写完整的HTML。除此之外，还需要禁用获取的HTML文本中自带的 &lt; img &gt; 标签自动加载，并把下载图片的操作放在native端来处理，并通过JS将图片在Cache中的地址返回给UIWebview</strong>。</p>
 <p>之所以要把图片操作放在native端做的好处在于：1、可以进行本地缓存，下次进入这篇文章可以直接从缓存读取，提高响应速度并且节省用户流量。2、可以实现点击图片放大、保存图片到相册等操作。</p>
 <p>技术难点也有两个：1、如何让HTML文本onLoad的时候，禁用自身的图片加载而是从本地获取图片？2、如何把native端下载好的图片返回给网页？</p>
 <p>翻看文档可只找到了一个 <code>- (NSString *)stringByEvaluatingJavaScriptFromString:(NSString *)script</code>和JS简易交互的方法，无法实现。</p>
