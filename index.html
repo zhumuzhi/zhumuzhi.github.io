@@ -523,102 +523,8 @@ XCTAssertNoThrowSpecificNamed(expression, specificException, exception_name, for
             
               
                 
-                <a class="post-title-link" href="/2016/05/11/FirstOne/" itemprop="url">
-                  FirstOne
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-11T22:58:48+08:00" content="2016-05-11">
-              2016-05-11
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="我是第一个测试文档"><a href="#我是第一个测试文档" class="headerlink" title="我是第一个测试文档"></a>我是第一个测试文档</h3><p>你好，个人博客，下一步设置主题</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/05/11/hello-world/" itemprop="url">
-                  Hello World
+                  Hello Hexo
                 </a>
               
             
@@ -662,14 +568,37 @@ XCTAssertNoThrowSpecificNamed(expression, specificException, exception_name, for
         
           
             <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>###基本命令  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+<p>###图片方案</p>
+<p>hexo 下插入图片现在大概有几个方案</p>
+<p>1.1 放在根目录</p>
+<p>早期大部分的方案是把图片放在 source/img 下，然后在 markdown 里写 <code>![img](/source/img/img.png)</code>。显然这样在本地的编辑器里完全不能正确识别图片的位置。</p>
+<p>1.2 asset-image</p>
+<p>在 hexo 2.x 时出现的插件，后来被吸纳进 <code>hexo 3 core</code> ，用法的介绍见 <a href="https://hexo.io/zh-cn/docs/asset-folders.html" target="_blank" rel="external">资源文件夹 | Hexo</a> 。比较尴尬的是，这种方法直接放弃了 markdown 原来的语法，使用类似 的语法，。markdown 本来有插入图片的语法不好好支持，专门用一个新的语法来插入本地图片，让我这种强迫症不太能接受。</p>
+<p>2 解决方案</p>
+<pre><code>[CodeFalling/hexo-asset-image](https://github.com/CodeFalling/hexo-asset-image)
+</code></pre><p>2.1 使用</p>
+<p>首先确认 <code>_config.yml</code> 中有 <code>post_asset_folder:true</code> 。</p>
+<p>在 hexo 目录，执行</p>
+<pre><code>npm install https://github.com/CodeFalling/hexo-asset-image --save
+</code></pre><p>假设在</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MacGesture2-Publish</span><br><span class="line">├── apppicker<span class="selector-class">.jpg</span></span><br><span class="line">├── logo<span class="selector-class">.jpg</span></span><br><span class="line">└── rules.jpg</span><br></pre></td></tr></table></figure>
+<p>MacGesture2-Publish.md<br>这样的目录结构（目录名和文章名一致），只要使用 <img src="MacGesture2-Publish/logo.jpg" alt="logo"> 就可以插入图片。</p>
+<p>生成的结构为</p>
+<p>public/2015/10/18/MacGesture2-Publish<br>├── apppicker.jpg<br>├── index.html<br>├── logo.jpg<br>└── rules.jpg<br>同时，生成的 html 是</p>
+<pre><code>&lt;img src=&quot;/2015/10/18/MacGesture2-Publish/logo.jpg&quot; alt=&quot;logo&quot;&gt;
+</code></pre><p>而不是愚蠢的</p>
+<pre><code>&lt;img src=&quot;MacGesture2-Publish/logo.jpg&quot; alt=&quot;logo&quot;&gt;
+</code></pre><p>值得一提的是，这个插件对于 <a href="https://github.com/CodeFalling/hexo-renderer-org" target="_blank" rel="external">CodeFalling/hexo-renderer-org</a> 同样有效。</p>
+<p>参考：<a href="http://www.tuicool.com/articles/umEBVfI" target="_blank" rel="external">在 hexo 中无痛使用本地图片</a></p>
 
           
         
@@ -739,7 +668,7 @@ XCTAssertNoThrowSpecificNamed(expression, specificException, exception_name, for
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
