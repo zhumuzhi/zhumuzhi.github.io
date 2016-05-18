@@ -85,30 +85,27 @@
 
 
 <meta name="description" content="date: 2016-05-18 21:42:46
-##CPU 资源消耗原因和解决方案  
- 对象创建 
+CPU 资源消耗原因和解决方案 对象创建 
 
 
-对象的创建会分配内存、调整属性、甚至还有读取文件等操作，比较消耗 CPU 资源。尽量用轻量的对象代替重量的对象，可以对性能有所优化。比如 CALayer 比 UIView 要轻量许多，那么不需要响应触摸事件的控件，用 CALayer 显示会更加合适。如果对象不涉及 UI 操作，则尽量放到后">
+对象的创建会分配内存、调整属性、甚至还有读取文件等操作，比较消耗 CPU 资源。尽量用轻量的对象代替重量的对象，可以对性能有所优化。比如 CALayer 比 UIView 要轻量许多，那么不需要响应触摸事件的控件，用 CALayer 显示会更加合适。如果对象不涉及 UI 操作，则尽量放到后台线程去创">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 优化界面流畅的技巧">
 <meta property="og:url" content="http://yoursite.com/2016/05/18/iOS 优化界面流畅的技巧/index.html">
 <meta property="og:site_name" content="朱慕之的Blog">
 <meta property="og:description" content="date: 2016-05-18 21:42:46
-##CPU 资源消耗原因和解决方案  
- 对象创建 
+CPU 资源消耗原因和解决方案 对象创建 
 
 
-对象的创建会分配内存、调整属性、甚至还有读取文件等操作，比较消耗 CPU 资源。尽量用轻量的对象代替重量的对象，可以对性能有所优化。比如 CALayer 比 UIView 要轻量许多，那么不需要响应触摸事件的控件，用 CALayer 显示会更加合适。如果对象不涉及 UI 操作，则尽量放到后">
-<meta property="og:updated_time" content="2016-05-18T14:15:14.000Z">
+对象的创建会分配内存、调整属性、甚至还有读取文件等操作，比较消耗 CPU 资源。尽量用轻量的对象代替重量的对象，可以对性能有所优化。比如 CALayer 比 UIView 要轻量许多，那么不需要响应触摸事件的控件，用 CALayer 显示会更加合适。如果对象不涉及 UI 操作，则尽量放到后台线程去创">
+<meta property="og:updated_time" content="2016-05-18T14:19:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 优化界面流畅的技巧">
 <meta name="twitter:description" content="date: 2016-05-18 21:42:46
-##CPU 资源消耗原因和解决方案  
- 对象创建 
+CPU 资源消耗原因和解决方案 对象创建 
 
 
-对象的创建会分配内存、调整属性、甚至还有读取文件等操作，比较消耗 CPU 资源。尽量用轻量的对象代替重量的对象，可以对性能有所优化。比如 CALayer 比 UIView 要轻量许多，那么不需要响应触摸事件的控件，用 CALayer 显示会更加合适。如果对象不涉及 UI 操作，则尽量放到后">
+对象的创建会分配内存、调整属性、甚至还有读取文件等操作，比较消耗 CPU 资源。尽量用轻量的对象代替重量的对象，可以对性能有所优化。比如 CALayer 比 UIView 要轻量许多，那么不需要响应触摸事件的控件，用 CALayer 显示会更加合适。如果对象不涉及 UI 操作，则尽量放到后台线程去创">
 
 
 
@@ -287,8 +284,7 @@
 
       
         <p>date: 2016-05-18 21:42:46</p>
-<p>##CPU 资源消耗原因和解决方案  </p>
-<font color="#8FD228" size="3"> 对象创建 </font>
+<h2 id="CPU-资源消耗原因和解决方案"><a href="#CPU-资源消耗原因和解决方案" class="headerlink" title="CPU 资源消耗原因和解决方案"></a>CPU 资源消耗原因和解决方案</h2><font color="#8FD228" size="3"> 对象创建 </font>
 
 
 <p>对象的创建会分配内存、调整属性、甚至还有读取文件等操作，比较消耗 CPU 资源。尽量用轻量的对象代替重量的对象，可以对性能有所优化。比如 CALayer 比 UIView 要轻量许多，那么不需要响应触摸事件的控件，用 CALayer 显示会更加合适。如果对象不涉及 UI 操作，则尽量放到后台线程去创建，但可惜的是包含有 CALayer 的控件，都只能在主线程创建和操作。通过 Storyboard 创建视图对象时，其资源消耗会比直接通过代码创建对象要大非常多，在性能敏感的界面里，Storyboard 并不是一个好的技术选择。</p>
@@ -346,8 +342,7 @@
 <font color="#8FD228" size="3"> 图形的生成 </font>
 
 <p>CALayer 的 border、圆角、阴影、遮罩（mask），CASharpLayer 的矢量图形显示，通常会触发离屏渲染（offscreen rendering），而离屏渲染通常发生在 GPU 中。当一个列表视图中出现大量圆角的 CALayer，并且快速滑动时，可以观察到 GPU 资源已经占满，而 CPU 资源消耗很少。这时界面仍然能正常滑动，但平均帧数会降到很低。为了避免这种情况，可以尝试开启 CALayer.shouldRasterize 属性，但这会把原本离屏渲染的操作转嫁到 CPU 上去。对于只需要圆角的某些场合，也可以用一张已经绘制好的圆角图片覆盖到原本视图上面来模拟相同的视觉效果。最彻底的解决办法，就是把需要显示的图形在后台线程绘制为图片，避免使用圆角、阴影、遮罩等属性。</p>
-<p>##性能优化技巧</p>
-<h4 id="预排版"><a href="#预排版" class="headerlink" title="预排版"></a>预排版</h4><p>当获取到 API JSON 数据后，我会把每条 Cell 需要的数据都在后台线程计算并封装为一个布局对象 CellLayout。CellLayout 包含所有文本的 CoreText 排版结果、Cell 内部每个控件的高度、Cell 的整体高度。每个 CellLayout 的内存占用并不多，所以当生成后，可以全部缓存到内存，以供稍后使用。这样，TableView 在请求各个高度函数时，不会消耗任何多余计算量；当把 CellLayout 设置到 Cell 内部时，Cell 内部也不用再计算布局了。</p>
+<h2 id="性能优化技巧"><a href="#性能优化技巧" class="headerlink" title="性能优化技巧"></a>性能优化技巧</h2><h4 id="预排版"><a href="#预排版" class="headerlink" title="预排版"></a>预排版</h4><p>当获取到 API JSON 数据后，我会把每条 Cell 需要的数据都在后台线程计算并封装为一个布局对象 CellLayout。CellLayout 包含所有文本的 CoreText 排版结果、Cell 内部每个控件的高度、Cell 的整体高度。每个 CellLayout 的内存占用并不多，所以当生成后，可以全部缓存到内存，以供稍后使用。这样，TableView 在请求各个高度函数时，不会消耗任何多余计算量；当把 CellLayout 设置到 Cell 内部时，Cell 内部也不用再计算布局了。</p>
 <p>对于通常的 TableView 来说，提前在后台计算好布局结果是非常重要的一个性能优化点。为了达到最高性能，你可能需要牺牲一些开发速度，不要用 Autolayout 等技术，少用 UILabel 等文本控件。但如果你对性能的要求并不那么高，可以尝试用 TableView 的预估高度的功能，并把每个 Cell 高度缓存下来。这里有个来自百度知道团队的开源项目可以很方便的帮你实现这一点：<a href="https://github.com/forkingdog/UITableView-FDTemplateLayoutCell/" target="_blank" rel="external">FDTemplateLayoutCell</a>。</p>
 <h4 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h4><p>微博的头像在某次改版中换成了圆形，所以我也跟进了一下。当头像下载下来后，我会在后台线程将头像预先渲染为圆形并单独保存到一个 ImageCache 中去。</p>
 <p>对于 TableView 来说，Cell 内容的离屏渲染会带来较大的 GPU 消耗。在 Twitter Demo 中，我为了图省事儿用到了不少 layer 的圆角属性，你可以在低性能的设备（比如 iPad 3）上快速滑动一下这个列表，能感受到虽然列表并没有较大的卡顿，但是整体的平均帧数降了下来。用 Instument 查看时能够看到 GPU 已经满负荷运转，而 CPU 却比较清闲。为了避免离屏渲染，你应当尽量避免使用 layer 的 border、corner、shadow、mask 等技术，而尽量在后台线程预先绘制好对应内容。</p>
@@ -358,13 +353,13 @@
 <p>ios_dispatch_blocked_1 ios_dispatch_blocked_2</p>
 <p>大量的任务提交到后台队列时，某些任务会因为某些原因（此处是 CGFont 锁）被锁住导致线程休眠，或者被阻塞，concurrent queue 随后会创建新的线程来执行其他任务。当这种情况变多时，或者 App 中使用了大量 concurrent queue 来执行较多任务时，App 在同一时刻就会存在几十个线程同时运行、创建、销毁。CPU 是用时间片轮转来实现线程并发的，尽管 concurrent queue 能控制线程的优先级，但当大量线程同时创建运行销毁时，这些操作仍然会挤占掉主线程的 CPU 资源。ASDK 有个 Feed 列表的 Demo：SocialAppLayout，当列表内 Cell 过多，并且非常快速的滑动时，界面仍然会出现少量卡顿，我谨慎的猜测可能与这个问题有关。</p>
 <p>使用 concurrent queue 时不可避免会遇到这种问题，但使用 serial queue 又不能充分利用多核 CPU 的资源。我写了一个简单的工具 <a href="https://github.com/ibireme/YYDispatchQueuePool" target="_blank" rel="external">YYDispatchQueuePool</a>，为不同优先级创建和 CPU 数量相同的 serial queue，每次从 pool 中获取 queue 时，会轮询返回其中一个 queue。我把 App 内所有异步操作，包括图像解码、对象释放、异步绘制等，都按优先级不同放入了全局的 serial queue 中执行，这样尽量避免了过多线程导致的性能问题。</p>
-<p>####更高效的异步图片加载<br>SDWebImage 在这个 Demo 里仍然会产生少量性能问题，并且有些地方不能满足我的需求，所以我自己实现了一个性能更高的图片加载库。(- -太吊了)在显示简单的单张图片时，利用 UIView.layer.contents 就足够了，没必要使用 UIImageView 带来额外的资源消耗，为此我在 CALayer 上添加了 setImageWithURL 等方法。除此之外，我还把图片解码等操作通过 YYDispatchQueuePool 进行管理，控制了 App 总线程数量。</p>
+<h4 id="更高效的异步图片加载"><a href="#更高效的异步图片加载" class="headerlink" title="更高效的异步图片加载"></a>更高效的异步图片加载</h4><p>SDWebImage 在这个 Demo 里仍然会产生少量性能问题，并且有些地方不能满足我的需求，所以我自己实现了一个性能更高的图片加载库。(- -太吊了)在显示简单的单张图片时，利用 UIView.layer.contents 就足够了，没必要使用 UIImageView 带来额外的资源消耗，为此我在 CALayer 上添加了 setImageWithURL 等方法。除此之外，我还把图片解码等操作通过 YYDispatchQueuePool 进行管理，控制了 App 总线程数量。</p>
 <h4 id="其他可以改进的地方"><a href="#其他可以改进的地方" class="headerlink" title="其他可以改进的地方"></a>其他可以改进的地方</h4><p>上面这些优化做完后，微博 Demo 已经非常流畅了，但在我的设想中，仍然有一些进一步优化的技巧，但限于时间和精力我并没有实现，下面简单列一下：</p>
 <p>列表中有不少视觉元素并不需要触摸事件，这些元素可以用 ASDK 的图层合成技术预先绘制为一张图。</p>
 <p>再进一步减少每个 Cell 内图层的数量，用 CALayer 替换掉 UIView。</p>
 <p>目前每个 Cell 的类型都是相同的，但显示的内容却各部一样，比如有的 Cell 有图片，有的 Cell 里是卡片。把 Cell 按类型划分，进一步减少 Cell 内不必要的视图对象和操作，应该能有一些效果。</p>
 <p>把需要放到主线程执行的任务划分为足够小的块，并通过 Runloop 来进行调度，在每个 Loop 里判断下一次 VSync 的时间，并在下次 VSync 到来前，把当前未执行完的任务延迟到下一个机会去。这个只是我的一个设想，并不一定能实现或起作用。</p>
-<p>###如何评测界面的流畅度<br>最后还是要提一下，“过早的优化是万恶之源”，在需求未定，性能问题不明显时，没必要尝试做优化，而要尽量正确的实现功能。做性能优化时，也最好是走修改代码 -&gt; Profile -&gt; 修改代码这样一个流程，优先解决最值得优化的地方。</p>
+<h3 id="如何评测界面的流畅度"><a href="#如何评测界面的流畅度" class="headerlink" title="如何评测界面的流畅度"></a>如何评测界面的流畅度</h3><p>最后还是要提一下，“过早的优化是万恶之源”，在需求未定，性能问题不明显时，没必要尝试做优化，而要尽量正确的实现功能。做性能优化时，也最好是走修改代码 -&gt; Profile -&gt; 修改代码这样一个流程，优先解决最值得优化的地方。</p>
 <p>如果你需要一个明确的 FPS 指示器，可以尝试一下 <a href="https://github.com/kconner/KMCGeigerCounter" target="_blank" rel="external">KMCGeigerCounter</a>。对于 CPU 的卡顿，它可以通过内置的 CADisplayLink 检测出来；对于 GPU 带来的卡顿，它用了一个 1x1 的 SKView 来进行监视。这个项目有两个小问题：SKView 虽然能监视到 GPU 的卡顿，但引入 SKView 本身就会对 CPU/GPU 带来额外的一点的资源消耗；这个项目在 iOS 9 下有一些兼容问题，需要稍作调整。</p>
 <p>我自己也写了个简单的 FPS 指示器：<a href="https://github.com/ibireme/YYText/blob/master/Demo/YYTextDemo/YYFPSLabel.m" target="_blank" rel="external">FPSLabel</a> 只有几十行代码，仅用到了 CADisplayLink 来监视 CPU 的卡顿问题。虽然不如上面这个工具完善，但日常使用没有太大问题。</p>
 <p>最后，用 Instuments 的 GPU Driver 预设，能够实时查看到 CPU 和 GPU 的资源消耗。在这个预设内，你能查看到几乎所有与显示有关的数据，比如 Texture 数量、CA 提交的频率、GPU 消耗等，在定位界面卡顿的问题时，这是最好的工具。</p>
@@ -499,7 +494,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#预排版"><span class="nav-number">1.</span> <span class="nav-text">预排版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#渲染"><span class="nav-number">2.</span> <span class="nav-text">渲染</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步绘制"><span class="nav-number">3.</span> <span class="nav-text">异步绘制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#全局并发控制"><span class="nav-number">4.</span> <span class="nav-text">全局并发控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他可以改进的地方"><span class="nav-number">5.</span> <span class="nav-text">其他可以改进的地方</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU-资源消耗原因和解决方案"><span class="nav-number">1.</span> <span class="nav-text">CPU 资源消耗原因和解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能优化技巧"><span class="nav-number">2.</span> <span class="nav-text">性能优化技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#预排版"><span class="nav-number">2.0.1.</span> <span class="nav-text">预排版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#渲染"><span class="nav-number">2.0.2.</span> <span class="nav-text">渲染</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步绘制"><span class="nav-number">2.0.3.</span> <span class="nav-text">异步绘制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#全局并发控制"><span class="nav-number">2.0.4.</span> <span class="nav-text">全局并发控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更高效的异步图片加载"><span class="nav-number">2.0.5.</span> <span class="nav-text">更高效的异步图片加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他可以改进的地方"><span class="nav-number">2.0.6.</span> <span class="nav-text">其他可以改进的地方</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何评测界面的流畅度"><span class="nav-number">2.1.</span> <span class="nav-text">如何评测界面的流畅度</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
