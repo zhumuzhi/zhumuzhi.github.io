@@ -84,9 +84,7 @@
 
 
 
-<meta name="description" content="title: UIView和CALayerdate: 2016-05-18 18:07:01
-
-UIView和CALayer都继承自NSObjet。
+<meta name="description" content="UIView和CALayer都继承自NSObjet。
 
 继承结构
 UIView的继承结构为: UIResponder : NSObject。
@@ -95,14 +93,12 @@ UIResponder是用来响应事件的，也就是UIView可以响应用户事件
 
 CALayer的继承结构为： NSObject
 
-直接从 NSObject">
+直接从 NSObject继承，因为缺少了UIResponder类，所以CALayer悲催的不能响应任何用户事件。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="朱慕之的Blog">
+<meta property="og:title" content="UIView和CALayer">
 <meta property="og:url" content="http://yoursite.com/2016/05/18/UIView和CALayer/index.html">
 <meta property="og:site_name" content="朱慕之的Blog">
-<meta property="og:description" content="title: UIView和CALayerdate: 2016-05-18 18:07:01
-
-UIView和CALayer都继承自NSObjet。
+<meta property="og:description" content="UIView和CALayer都继承自NSObjet。
 
 继承结构
 UIView的继承结构为: UIResponder : NSObject。
@@ -111,13 +107,11 @@ UIResponder是用来响应事件的，也就是UIView可以响应用户事件
 
 CALayer的继承结构为： NSObject
 
-直接从 NSObject">
-<meta property="og:updated_time" content="2016-05-18T10:57:49.000Z">
+直接从 NSObject继承，因为缺少了UIResponder类，所以CALayer悲催的不能响应任何用户事件。">
+<meta property="og:updated_time" content="2016-05-18T11:07:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="朱慕之的Blog">
-<meta name="twitter:description" content="title: UIView和CALayerdate: 2016-05-18 18:07:01
-
-UIView和CALayer都继承自NSObjet。
+<meta name="twitter:title" content="UIView和CALayer">
+<meta name="twitter:description" content="UIView和CALayer都继承自NSObjet。
 
 继承结构
 UIView的继承结构为: UIResponder : NSObject。
@@ -126,7 +120,7 @@ UIResponder是用来响应事件的，也就是UIView可以响应用户事件
 
 CALayer的继承结构为： NSObject
 
-直接从 NSObject">
+直接从 NSObject继承，因为缺少了UIResponder类，所以CALayer悲催的不能响应任何用户事件。">
 
 
 
@@ -144,7 +138,7 @@ CALayer的继承结构为： NSObject
   };
 </script>
 
-  <title>  | 朱慕之的Blog </title>
+  <title> UIView和CALayer | 朱慕之的Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -264,7 +258,7 @@ CALayer的继承结构为： NSObject
             
             
               
-                
+                UIView和CALayer
               
             
           </h1>
@@ -304,8 +298,7 @@ CALayer的继承结构为： NSObject
       
 
       
-        <p>title: UIView和CALayer<br>date: 2016-05-18 18:07:01</p>
-<ul>
+        <ul>
 <li>UIView和CALayer都继承自NSObjet。</li>
 </ul>
 <h4 id="继承结构"><a href="#继承结构" class="headerlink" title="继承结构"></a>继承结构</h4><ul>
@@ -338,7 +331,7 @@ CALayer的继承结构为： NSObject
 <ul>
 <li>通过操作这个CALayer对象，可以很方便的调整UIView的一些界面属性，比如：阴影，圆角大小，旋转等等。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">viewT.layer.cornerRadius = 10;//设置半径</span><br><span class="line">viewT.layer.borderWidth = 10;//设置边框的宽度，当然可以不要</span><br><span class="line">viewT.layer.borderColor = [[UIColor redColor] CGColor];//设置边框的颜色</span><br><span class="line">viewT.layer.masksToBounds = YES;//设为NO去试试</span><br></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">viewT.layer.cornerRadius = <span class="number">10</span>;<span class="comment">//设置半径</span></span><br><span class="line">viewT.layer.borderWidth = <span class="number">10</span>;<span class="comment">//设置边框的宽度，当然可以不要</span></span><br><span class="line">viewT.layer.borderColor = [[<span class="built_in">UIColor</span> redColor] <span class="built_in">CGColor</span>];<span class="comment">//设置边框的颜色</span></span><br><span class="line">viewT.layer.masksToBounds = <span class="literal">YES</span>;<span class="comment">//设为NO去试试</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>所以UIView相比CALayer最大区别是UIView可以响应用户事件，而CALayer不可以。UIView侧重于对显示内容的管理，CALayer侧重于对内容的绘制。</strong></p>
 </li>
