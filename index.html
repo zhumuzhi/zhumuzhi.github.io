@@ -233,6 +233,145 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/18/UIView和CALayer/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-18T18:07:01+08:00" content="2016-05-18">
+              2016-05-18
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>title: UIView和CALayer<br>date: 2016-05-18 18:07:01</p>
+<ul>
+<li>UIView和CALayer都继承自NSObjet。</li>
+</ul>
+<p>####继承结构</p>
+<ul>
+<li>UIView的继承结构为: UIResponder : NSObject。<ul>
+<li>UIResponder是用来响应事件的，也就是UIView可以响应用户事件    </li>
+</ul>
+</li>
+<li><p>CALayer的继承结构为： NSObject</p>
+<ul>
+<li>直接从 NSObject继承，因为缺少了UIResponder类，所以CALayer悲催的不能响应任何用户事件。  </li>
+</ul>
+</li>
+<li><p>UIView是视图的基类，UIViewController是视图控制器的基类，UIResponder是表示一个可以在屏幕上响应触摸事件的对象；</p>
+</li>
+</ul>
+<p>####所属框架</p>
+<ul>
+<li>UIView是在 /System/Library/Frameworks/UIKit.framework中定义的<ul>
+<li>UIKit主要是用来构建用户界面，并且是可以响应事件的（源于UIView的父类UIResponder）</li>
+<li>UIView是用来显示内容的，可以处理用户事件</li>
+</ul>
+</li>
+<li>CALayer是在/System/Library/Frameworks/QuartzCore.framework定义的。<ul>
+<li>CALayer作为一个低级的，可以承载绘制内容的底层对象出现在该框架中。</li>
+<li>CALayer是用来绘制内容的，对内容进行动画处理依赖与UIView来进行显示，不能处理用户事件。</li>
+</ul>
+</li>
+</ul>
+<p>####作用机制</p>
+<ul>
+<li><p>当UIView需要显示的时候，会调用drawRect：方法进行绘图，并且会将所有内容绘制在自己的图层上（CALayer上），系统将图层拷贝到屏幕上，完成UIView的显示。</p>
+<ul>
+<li>通过操作这个CALayer对象，可以很方便的调整UIView的一些界面属性，比如：阴影，圆角大小，旋转等等。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">viewT.layer.cornerRadius = 10;//设置半径</span><br><span class="line">viewT.layer.borderWidth = 10;//设置边框的宽度，当然可以不要</span><br><span class="line">viewT.layer.borderColor = [[UIColor redColor] CGColor];//设置边框的颜色</span><br><span class="line">viewT.layer.masksToBounds = YES;//设为NO去试试</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>所以UIView相比CALayer最大区别是UIView可以响应用户事件，而CALayer不可以。UIView侧重于对显示内容的管理，CALayer侧重于对内容的绘制。</strong></p>
+</li>
+<li><p><strong>UIView和CALayer是相互依赖的关系。UIView依赖与CALayer提供的内容，CALayer依赖UIView提供的容器来显示绘制的内容。归根到底CALayer是这一切的基础，如果没有CALayer，UIView自身也不会存在，UIView是一个特殊的CALayer实现，添加了响应事件的能力。</strong></p>
+</li>
+<li><strong>UIView来自CALayer，高于CALayer，是CALayer的高层实现与封装。UIView的所有特性来源于CALayer支持。</strong></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/14/单元测试/" itemprop="url">
                   未命名
                 </a>
@@ -277,8 +416,7 @@
       
         
           
-            <hr>
-<p>title: 单元测试<br>date: 2016-05-14 23:50:28</p>
+            <p>title: 单元测试<br>date: 2016-05-14 23:50:28</p>
 <p>在计算机编程中，<strong>单元测试</strong>（英语：Unit Testing）又称为<strong>模块测试</strong>, 是针对程序模块的最小单位来进行正确性检验的测试工作。程序单元是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。 – 维基百科</p>
 <p>使用单元测试以后，我们就没必要为了测试某个小模块去编译我们的程序，然后去等待模拟器启动然后到你需要验证的模块去。如果项目很大，编译要等很长时间</p>
 <p>####单元测试能节约我们的时间，提高开发效率，对于项目越大的效果越明显。</p>
@@ -294,7 +432,7 @@
 <p>测试文件名称自定义，可以删除自己创建，注意要继承自XCTestCase<br>通过Xcode的File-&gt;New-&gt;File-&gt;Source选择Unit Test Case Class来新建一个UserTests,注意要继承XCTestCase类。</p>
 <p>项目名+Test的.m文件里面默认有4个方法，这个文件里面主要做一些逻辑的测试。项目名+UITest的.m文件里默认有3个方法。这个文件里面主要做一些UI的测试。</p>
 <p>在讲解如何写测试方法前，先说说默认的方法的作用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//  MZToolsTest.m</span><br><span class="line">#import &lt;XCTest/XCTest.h&gt;</span><br><span class="line"></span><br><span class="line">@interface MZToolsTest : XCTestCase</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation MZToolsTest</span><br><span class="line">//每个test方法执行前调用，在这个测试用例里进行一些通用的初始化工作</span><br><span class="line">- (void)setUp &#123;</span><br><span class="line">   [super setUp];</span><br><span class="line">   // Put setup code here. This method is called before the invocation of each test method in the class.</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//每个test方法执行后调用</span><br><span class="line">- (void)tearDown &#123;</span><br><span class="line">   // Put teardown code here. This method is called after the invocation of each test method in the class.</span><br><span class="line">   [super tearDown];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//测试方法样例</span><br><span class="line">- (void)testExample &#123;</span><br><span class="line">   // This is an example of a functional test case.</span><br><span class="line">   // Use XCTAssert and related functions to verify your tests produce the correct results.</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//这个方法主要是做性能测试的，所谓性能测试，主要就是评估一段代码的运行时间。该方法就是性能测试方法的样例。</span><br><span class="line">- (void)testPerformanceExample &#123;</span><br><span class="line">   // This is an example of a performance test case.</span><br><span class="line">   [self measureBlock:^&#123;</span><br><span class="line">       // Put the code you want to measure the time of here.</span><br><span class="line">   &#125;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//  MZToolsTest.m</span><br><span class="line">#import &lt;XCTest/XCTest.h&gt;</span><br><span class="line"></span><br><span class="line">@interface MZToolsTest : XCTestCase</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation MZToolsTest</span><br><span class="line">//每个test方法执行前调用，在这个测试用例里进行一些通用的初始化工作</span><br><span class="line">- (void)setUp &#123;</span><br><span class="line">   [super setUp];</span><br><span class="line">   // Put setup code here. This method is called before the invocation of each test method in the class.</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//每个test方法执行后调用</span><br><span class="line">- (void)tearDown &#123;</span><br><span class="line">   // Put teardown code here. This method is called after the invocation of each test method in the class.</span><br><span class="line">   [super tearDown];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//测试方法样例</span><br><span class="line">- (void)testExample &#123;</span><br><span class="line">   // This is an example of a functional test case.</span><br><span class="line">   // Use XCTAssert and related functions to verify your tests produce the correct results.</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//这个方法主要是做性能测试的，所谓性能测试，主要就是评估一段代码的运行时间。该方法就是性能测试方法的样例。</span><br><span class="line">- (void)testPerformanceExample &#123;</span><br><span class="line">   // This is an example of a performance test case.</span><br><span class="line">   [self measureBlock:^&#123;</span><br><span class="line">       // Put the code you want to measure the time of here.</span><br><span class="line">   &#125;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
 <p>测试用例方法非常简单，从testExample这个方法我们大概知道怎么写了，方法名只需要以test开头，是的，就是这么简单。<br>现在我们模拟登录这个功能来写一个登录模块的测试用例</p>
 <pre><code>#import &lt;Foundation/Foundation.h&gt;
 
@@ -607,7 +745,7 @@ XCTAssertNoThrowSpecificNamed(expression, specificException, exception_name, for
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
