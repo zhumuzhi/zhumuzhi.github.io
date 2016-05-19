@@ -257,6 +257,134 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/19/FMDB/" itemprop="url">
+                  FMDB
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-19T10:29:21+08:00" content="2016-May-Thursday">
+              2016-May-Thursday
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><hr>
+<p>SQLite <a href="">(http://www.sqlite.org/docs.html)</a> 是一个轻量级的关系数据库。iOS SDK 很早就支持了 SQLite，在使用时，只需要加入 libsqlite3.dylib 依赖以及引入 sqlite3.h 头文件即可。但是，原生的 SQLite API 在使用上相当不友好，在使用时，非常不便。于是，开源社区中就出现了一系列将 SQLite API 进行封装的库，而 FMDB <a href="https://github.com/ccgus/fmdb" target="_blank" rel="external">(https://github.com/ccgus/fmdb) </a>则是开源社区中的优秀者。</p>
+<p>FMDB 在使用上相当方便。以下是一个简单的例子：</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">NSString</span>* docsdir = [<span class="symbol">NSSearchPathForDirectoriesInDomains</span>( <span class="symbol">NSDocumentDirectory</span>, <span class="symbol">NSUserDomainMask</span>, <span class="symbol">YES</span>) lastObject];</span><br><span class="line"><span class="symbol">NSString</span>* dbpath = [docsdir stringByAppendingPathComponent:@<span class="string">"user.sqlite"</span>]; </span><br><span class="line"><span class="symbol">FMDatabase</span>* db = [<span class="symbol">FMDatabase</span> databaseWithPath:dbpath];</span><br><span class="line">[db open];</span><br><span class="line"><span class="symbol">FMResultSet</span> *rs = [db executeQuery:@<span class="string">"select * from people"</span>];</span><br><span class="line">while ([rs next]) &#123;</span><br><span class="line">    <span class="symbol">NSLog</span>(@<span class="string">"%@ %@"</span>,</span><br><span class="line">        [rs stringForColumn:@<span class="string">"firstname"</span>], </span><br><span class="line">        [rs stringForColumn:@<span class="string">"lastname"</span>]);</span><br><span class="line">&#125;</span><br><span class="line">[db close];</span><br></pre></td></tr></table></figure>
+<p>可以看到，使用 FMDB 后的数据库代码清晰明了，比原生的 API 优雅多了。另外，FMDB 同时兼容 ARC 和非 ARC 工程，会自动根据工程配置来调整相关的内存管理代码。</p>
+<h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><hr>
+<p>该使用说明主要翻译自 fmdb 的 github 项目说明文档: <a href="https://github.com/ccgus/fmdb" target="_blank" rel="external">https://github.com/ccgus/fmdb</a></p>
+<h3 id="引入相关文件"><a href="#引入相关文件" class="headerlink" title="引入相关文件"></a>引入相关文件</h3><p>首先将 FMDB 从 github 上 clone 下来，然后将以下文件 copy 到你的工程中：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">FMDatabase<span class="selector-class">.h</span></span><br><span class="line">FMDatabase<span class="selector-class">.m</span></span><br><span class="line">FMDatabaseAdditions<span class="selector-class">.h</span></span><br><span class="line">FMDatabaseAdditions<span class="selector-class">.m</span></span><br><span class="line">FMDatabasePool<span class="selector-class">.h</span></span><br><span class="line">FMDatabasePool<span class="selector-class">.m</span></span><br><span class="line">FMDatabaseQueue<span class="selector-class">.h</span></span><br><span class="line">FMDatabaseQueue<span class="selector-class">.m</span></span><br><span class="line">FMResultSet<span class="selector-class">.h</span></span><br><span class="line">FMResultSet.m</span><br></pre></td></tr></table></figure>
+<h3 id="建立数据库"><a href="#建立数据库" class="headerlink" title="建立数据库"></a>建立数据库</h3><p>建立数据库只需要如下一行即可 , 当该文件不存在时，fmdb 会自己创建一个。如果你传入的参数是空串：@”” ，则 fmdb 会在临时文件目录下创建这个数据库，如果你传入的参数是 NULL，则它会建立一个在内存中的数据库。</p>
+<pre><code>FMDatabase *db = [FMDatabase databaseWithPath:@&quot;/tmp/tmp.db&quot;];
+</code></pre><h3 id="打开数据库"><a href="#打开数据库" class="headerlink" title="打开数据库"></a>打开数据库</h3><p>使用如下语句，如果打开失败，可能是权限不足或者资源不足。通常打开完操作操作后，需要调用 close 方法来关闭数据库。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (![<span class="keyword">db</span> <span class="keyword">open</span>]) &#123;</span><br><span class="line">    <span class="comment">// error </span></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// some operation</span></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">[<span class="keyword">db</span> <span class="keyword">close</span>];</span><br></pre></td></tr></table></figure>
+<h3 id="执行更新操作"><a href="#执行更新操作" class="headerlink" title="执行更新操作"></a>执行更新操作</h3><p>除了 Select 操作之外，其它的都是更新操作。更新操作使用如下方法，如果有错误，可以用 error 参数中获得。</p>
+<pre><code>-[FMDatabase executeUpdate:error:withArgumentsInArray:orVAList:]
+</code></pre><h3 id="执行查询操作"><a href="#执行查询操作" class="headerlink" title="执行查询操作"></a>执行查询操作</h3><p>查询操作示例如下。注意：即使操作结果只有一行，也需要先调用 FMResultSet 的 next 方法。</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">FMResultSet *<span class="keyword">s</span> = [db executeQuery:@<span class="string">"SELECT * FROM myTable"</span>]<span class="comment">;</span></span><br><span class="line"><span class="keyword">while</span> ([<span class="keyword">s</span> next]) &#123;</span><br><span class="line">    <span class="comment">//retrieve values for each record</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">FMResultSet *<span class="keyword">s</span> = [db executeQuery:@<span class="string">"SELECT COUNT(*) FROM myTable"</span>]<span class="comment">;</span></span><br><span class="line"><span class="keyword">if</span> ([<span class="keyword">s</span> next]) &#123;</span><br><span class="line">    int totalCount = [<span class="keyword">s</span> intForColumnIndex:<span class="number">0</span>]<span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>FMDB 提供如下多个方法来获取不同类型的数据：</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">intForColumn:</span></span><br><span class="line"><span class="symbol">longForColumn:</span></span><br><span class="line"><span class="symbol">longLongIntForColumn:</span></span><br><span class="line"><span class="symbol">boolForColumn:</span></span><br><span class="line"><span class="symbol">doubleForColumn:</span></span><br><span class="line"><span class="symbol">stringForColumn:</span></span><br><span class="line"><span class="symbol">dateForColumn:</span></span><br><span class="line"><span class="symbol">dataForColumn:</span></span><br><span class="line"><span class="symbol">dataNoCopyForColumn:</span></span><br><span class="line"><span class="symbol">UTF8StringForColumnIndex:</span></span><br><span class="line"><span class="symbol">objectForColumn:</span></span><br></pre></td></tr></table></figure>
+<p>通常情况下，你并不需要关闭 FMResultSet，因为相关的数据库关闭时，FMResultSet 也会被自动关闭。</p>
+<h3 id="数据参数"><a href="#数据参数" class="headerlink" title="数据参数"></a>数据参数</h3><p>通常情况下，你可以按照标准的 SQL 语句，用 ? 表示执行语句的参数，如：</p>
+<pre><code>INSERT INTO myTable VALUES (?, ?, ?)
+</code></pre><p>然后，可以我们可以调用 executeUpdate 方法来将 ? 所指代的具体参数传入，通常是用变长参数来传递进去的，如下：</p>
+<pre><code>NSString *sql = @&quot;insert into User (name, password) values (?, ?)&quot;;
+[db executeUpdate:sql, user.name, user.password];
+</code></pre><p>这里需要注意的是，参数必须是 NSObject 的子类，所以象 int,double,bool 这种基本类型，需要封装成对应的包装类才行，如下所示：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误，42 不能作为参数</span></span><br><span class="line">[db <span class="string">executeUpdate:</span>@<span class="string">"INSERT INTO myTable VALUES (?)"</span>, <span class="number">42</span>];</span><br><span class="line"><span class="comment">// 正确，将 42 封装成 NSNumber 类</span></span><br><span class="line">[db <span class="string">executeUpdate:</span>@<span class="string">"INSERT INTO myTable VALUES (?)"</span>, [NSNumber <span class="string">numberWithInt:</span><span class="number">42</span>]];</span><br></pre></td></tr></table></figure>
+<p>线程安全<br>如果我们的 app 需要多线程操作数据库，那么就需要使用 FMDatabaseQueue 来保证线程安全了。<br>切记不能在多个线程中共同一个 FMDatabase 对象并且在多个线程中同时使用，这个类本身不是线程安全的，这样使用会造成数据混乱等问题。<br>使用 FMDatabaseQueue 很简单，首先用一个数据库文件地址来初使化 FMDatabaseQueue，然后就可以将一个闭包 (block) 传入 inDatabase 方法中。<br>在闭包中操作数据库，而不直接参与 FMDatabase 的管理。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建，最好放在一个单例的类中</span></span><br><span class="line">FMDatabaseQueue *queue = [FMDatabaseQueue <span class="string">databaseQueueWithPath:</span>aPath];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">[queue <span class="string">inDatabase:</span>^(FMDatabase *db) &#123;</span><br><span class="line">    [db <span class="string">executeUpdate:</span>@<span class="string">"INSERT INTO myTable VALUES (?)"</span>, [NSNumber <span class="string">numberWithInt:</span><span class="number">1</span>]];</span><br><span class="line">    [db <span class="string">executeUpdate:</span>@<span class="string">"INSERT INTO myTable VALUES (?)"</span>, [NSNumber <span class="string">numberWithInt:</span><span class="number">2</span>]];</span><br><span class="line">    [db <span class="string">executeUpdate:</span>@<span class="string">"INSERT INTO myTable VALUES (?)"</span>, [NSNumber <span class="string">numberWithInt:</span><span class="number">3</span>]];</span><br><span class="line"></span><br><span class="line">    FMResultSet *rs = [db <span class="string">executeQuery:</span>@<span class="string">"select * from foo"</span>];</span><br><span class="line">    <span class="keyword">while</span> ([rs next]) &#123;</span><br><span class="line">        <span class="comment">// …</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果要支持事务</span></span><br><span class="line">[queue <span class="string">inTransaction:</span>^(FMDatabase *db, BOOL *rollback) &#123;</span><br><span class="line">    [db <span class="string">executeUpdate:</span>@<span class="string">"INSERT INTO myTable VALUES (?)"</span>, [NSNumber <span class="string">numberWithInt:</span><span class="number">1</span>]];</span><br><span class="line">    [db <span class="string">executeUpdate:</span>@<span class="string">"INSERT INTO myTable VALUES (?)"</span>, [NSNumber <span class="string">numberWithInt:</span><span class="number">2</span>]];</span><br><span class="line">    [db <span class="string">executeUpdate:</span>@<span class="string">"INSERT INTO myTable VALUES (?)"</span>, [NSNumber <span class="string">numberWithInt:</span><span class="number">3</span>]];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (whoopsSomethingWrongHappened) &#123;</span><br><span class="line">        *rollback = YES;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// etc…</span></span><br><span class="line">    [db <span class="string">executeUpdate:</span>@<span class="string">"INSERT INTO myTable VALUES (?)"</span>, [NSNumber <span class="string">numberWithInt:</span><span class="number">4</span>]];</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><hr>
+<p>为了查看 Sqlite 中的数据，一个好的图形化界面的数据库管理程序是必不可少的。mysql 有 phpMyAdmin，那么 sqlite 呢？<br>我主要使用的是 Firefox 的一个名为 SQLite Manager 的插件，安装此插件后，可以直接打开后缀名为 sqlite 的数据库文件。SQLite Manager 提供一个图形化的界面来执行数据查询或更改操作。如下图所示：</p>
+<p><img src="http://blog.devtang.com/images/sqlite_manager.jpg" alt=""></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><hr>
+<p>FMDB 将 SQLite API 进行了很友好的封装，使用上非常方便，对于那些使用纯 Sqlite API 来进行数据库操作的 app，可以考虑将其迁移到基于 FMDB 上，这对于以后数据库相关功能的开发维护，可以提高不少效率。</p>
+<p>参考：<a href="http://blog.devtang.com/2012/04/22/use-fmdb/" target="_blank" rel="external">在iOS开发中使用FMDB</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/18/UIWebView与JS的交互/" itemprop="url">
                   UIWebView与JS的交互
                 </a>
@@ -1005,7 +1133,7 @@ XCTAssertNoThrowSpecificNamed(expression, specificException, exception_name, for
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
