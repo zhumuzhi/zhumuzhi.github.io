@@ -1,0 +1,602 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="Signika/css?family=Roboto:300,300italic,400,400italic,700,700italic|Monda:300,300italic,400,400italic,700,700italic|Oswald:300,300italic,400,400italic,700,700italic|Exo:300,300italic,400,400italic,700,700italic|Menlo:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="WKWebView APIWKWebView的头文件声明：
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WKWebView">
+<meta property="og:url" content="http://yoursite.com/2016/05/23/WKWebView/index.html">
+<meta property="og:site_name" content="朱慕之's blog">
+<meta property="og:description" content="WKWebView APIWKWebView的头文件声明：
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899">
+<meta property="og:updated_time" content="2016-05-23T07:57:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WKWebView">
+<meta name="twitter:description" content="WKWebView APIWKWebView的头文件声明：
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> WKWebView | 朱慕之's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">朱慕之's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-首页"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-归档"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-标签"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                WKWebView
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-23T14:53:13+08:00" content="2016-May-Monday">
+              2016-May-Monday
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="WKWebView-API"><a href="#WKWebView-API" class="headerlink" title="WKWebView API"></a>WKWebView API</h2><p>WKWebView的头文件声明：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="comment">// webview 配置，具体看下面</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, <span class="keyword">copy</span>) WKWebViewConfiguration *configuration;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 导航代理 </span></span><br><span class="line"><span class="keyword">@property</span> (nullable, <span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="keyword">id</span> &lt;WKNavigationDelegate&gt; navigationDelegate;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 用户交互代理</span></span><br><span class="line"><span class="keyword">@property</span> (nullable, <span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="keyword">id</span> &lt;WK<span class="built_in">UIDelegate</span>&gt; <span class="built_in">UIDelegate</span>;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 页面前进、后退列表</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, <span class="keyword">strong</span>) WKBackForwardList *backForwardList;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 默认构造器</span></span><br><span class="line">- (instancetype)initWithFrame:(<span class="built_in">CGRect</span>)frame configuration:(WKWebViewConfiguration *)configuration <span class="built_in">NS_DESIGNATED_INITIALIZER</span>;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 已不再使用</span></span><br><span class="line">- (instancetype)initWithCoder:(<span class="built_in">NSCoder</span> *)coder <span class="built_in">NS_UNAVAILABLE</span>;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 与UIWebView一样的加载请求API</span></span><br><span class="line">- (nullable WKNavigation *)loadRequest:(<span class="built_in">NSURLRequest</span> *)request;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 加载URL</span></span><br><span class="line">- (nullable WKNavigation *)loadFileURL:(<span class="built_in">NSURL</span> *)URL allowingReadAccessToURL:(<span class="built_in">NSURL</span> *)readAccessURL <span class="built_in">NS_AVAILABLE</span>(<span class="number">10</span>_11, <span class="number">9</span>_0);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 直接加载HTML</span></span><br><span class="line">- (nullable WKNavigation *)loadHTMLString:(<span class="built_in">NSString</span> *)string baseURL:(nullable <span class="built_in">NSURL</span> *)baseURL;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 直接加载data</span></span><br><span class="line">- (nullable WKNavigation *)loadData:(<span class="built_in">NSData</span> *)data MIMEType:(<span class="built_in">NSString</span> *)MIMEType characterEncodingName:(<span class="built_in">NSString</span> *)characterEncodingName baseURL:(<span class="built_in">NSURL</span> *)baseURL <span class="built_in">NS_AVAILABLE</span>(<span class="number">10</span>_11, <span class="number">9</span>_0);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 前进或者后退到某一页面</span></span><br><span class="line">- (nullable WKNavigation *)goToBackForwardListItem:(WKBackForwardListItem *)item;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 页面的标题，这昆支持KVO的</span></span><br><span class="line"><span class="keyword">@property</span> (nullable, <span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *title;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 当前请求的URL，它是支持KVO的</span></span><br><span class="line"><span class="keyword">@property</span> (nullable, <span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSURL</span> *URL;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 标识当前是否正在加载内容中，它是支持KVO的</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, getter=isLoading) <span class="built_in">BOOL</span> loading;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 当前加载的进度，范围为[0, 1]</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>) <span class="keyword">double</span> estimatedProgress;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 标识页面中的所有资源是否通过安全加密连接来加载，它是支持KVO的</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>) <span class="built_in">BOOL</span> hasOnlySecureContent;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 当前导航的证书链，支持KVO</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSArray</span> *certificateChain <span class="built_in">NS_AVAILABLE</span>(<span class="number">10</span>_11, <span class="number">9</span>_0);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 是否可以招待goback操作，它是支持KVO的</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>) <span class="built_in">BOOL</span> canGoBack;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 是否可以执行gofarward操作，支持KVO</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>) <span class="built_in">BOOL</span> canGoForward;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 返回上一页面，如果不能返回，则什么也不干</span></span><br><span class="line">- (nullable WKNavigation *)goBack;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 进入下一页面，如果不能前进，则什么也不干</span></span><br><span class="line">- (nullable WKNavigation *)goForward;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 重新载入页面</span></span><br><span class="line">- (nullable WKNavigation *)reload;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 重新从原始URL载入</span></span><br><span class="line">- (nullable WKNavigation *)reloadFromOrigin;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 停止加载数据</span></span><br><span class="line">- (<span class="keyword">void</span>)stopLoading;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 执行JS代码</span></span><br><span class="line">- (<span class="keyword">void</span>)evaluateJavaScript:(<span class="built_in">NSString</span> *)javaScriptString completionHandler:(<span class="keyword">void</span> (^ __nullable)(__nullable <span class="keyword">id</span>, <span class="built_in">NSError</span> * __nullable error))completionHandler;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 标识是否支持左、右swipe手势是否可以前进、后退</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>) <span class="built_in">BOOL</span> allowsBackForwardNavigationGestures;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 自定义user agent，如果没有则为nil</span></span><br><span class="line"><span class="keyword">@property</span> (nullable, <span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *customUserAgent <span class="built_in">NS_AVAILABLE</span>(<span class="number">10</span>_11, <span class="number">9</span>_0);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 在iOS上默认为NO，标识不允许链接预览</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>) <span class="built_in">BOOL</span> allowsLinkPreview <span class="built_in">NS_AVAILABLE</span>(<span class="number">10</span>_11, <span class="number">9</span>_0);</span><br><span class="line"> </span><br><span class="line"><span class="meta">#if TARGET_OS_IPHONE</span></span><br><span class="line"><span class="comment">/*! @abstract The scroll view associated with the web view.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, <span class="keyword">strong</span>) <span class="built_in">UIScrollView</span> *scrollView;</span><br><span class="line"><span class="meta">#endif</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#if !TARGET_OS_IPHONE</span></span><br><span class="line"><span class="comment">// 标识是否支持放大手势，默认为NO</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>) <span class="built_in">BOOL</span> allowsMagnification;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 放大因子，默认为1</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>) <span class="built_in">CGFloat</span> magnification;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 根据设置的缩放因子来缩放页面，并居中显示结果在指定的点</span></span><br><span class="line">- (<span class="keyword">void</span>)setMagnification:(<span class="built_in">CGFloat</span>)magnification centeredAtPoint:(<span class="built_in">CGPoint</span>)point;</span><br><span class="line"> </span><br><span class="line"><span class="meta">#endif</span></span><br><span class="line">```` </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="meta">## WKWebViewConfiguration配置</span></span><br><span class="line"></span><br><span class="line">	WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];</span><br><span class="line"> </span><br><span class="line"><span class="meta">## WKPreferences偏好设置</span></span><br><span class="line"></span><br><span class="line">目前在iOS平台上偏好设置只有三个属性可以设置，如下：</span><br><span class="line"></span><br><span class="line">```` </span><br><span class="line"><span class="comment">// 设置偏好设置</span></span><br><span class="line">config.preferences = [[WKPreferences alloc] init];</span><br><span class="line"><span class="comment">// 默认为0</span></span><br><span class="line">config.preferences.minimumFontSize = <span class="number">10</span>;</span><br><span class="line"><span class="comment">// 默认认为YES</span></span><br><span class="line">config.preferences.javaScriptEnabled = <span class="literal">YES</span>;</span><br><span class="line"><span class="comment">// 在iOS上默认为NO，表示不能自动通过窗口打开</span></span><br><span class="line">config.preferences.javaScriptCanOpenWindowsAutomatically = <span class="literal">NO</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="WKProcessPool内容处理池"><a href="#WKProcessPool内容处理池" class="headerlink" title="WKProcessPool内容处理池"></a>WKProcessPool内容处理池</h2><p>WKProcessPool并没有公开任何的属性或者方法，不需要配置：</p>
+<pre><code>config.processPool = [[WKProcessPool alloc] init];
+</code></pre><p>其实我们也没有必须去创建它。</p>
+<h2 id="WKUserContentController内容交互控制器"><a href="#WKUserContentController内容交互控制器" class="headerlink" title="WKUserContentController内容交互控制器"></a>WKUserContentController内容交互控制器</h2><p>我们要通过JS与webview内容交互，就需要到这个类了，它的所有属性及方法说明如下：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 只读属性，所有添加的WKUserScript都在这里可以获取到</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSArray</span>&lt;WKUserScript *&gt; *userScripts;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 注入JS</span></span><br><span class="line">- (<span class="keyword">void</span>)addUserScript:(WKUserScript *)userScript;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 移除所有注入的JS</span></span><br><span class="line">- (<span class="keyword">void</span>)removeAllUserScripts;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 添加scriptMessageHandler到所有的frames中，则都可以通过</span></span><br><span class="line"><span class="comment">// window.webkit.messageHandlers.&lt;name&gt;.postMessage(&lt;messageBody&gt;)</span></span><br><span class="line"><span class="comment">// 发送消息</span></span><br><span class="line"><span class="comment">// 比如，JS要调用我们原生的方法，就可以通过这种方式了</span></span><br><span class="line">- (<span class="keyword">void</span>)addScriptMessageHandler:(<span class="keyword">id</span> &lt;WKScriptMessageHandler&gt;)scriptMessageHandler name:(<span class="built_in">NSString</span> *)name;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 根据name移除所注入的scriptMessageHandler</span></span><br><span class="line">- (<span class="keyword">void</span>)removeScriptMessageHandlerForName:(<span class="built_in">NSString</span> *)name;</span><br></pre></td></tr></table></figure>
+<h2 id="WKUserScript"><a href="#WKUserScript" class="headerlink" title="WKUserScript"></a>WKUserScript</h2><p>在WKUserContentController中，所有使用到WKUserScript。WKUserContentController是用于与JS交互的类，而所注入的JS是WKUserScript对象。它的所有属性和方法如下：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JS源代码</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *source;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// JS注入时间</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>) WKUserScriptInjectionTime injectionTime;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 只读属性，表示JS是否应该注入到所有的frames中还是只有main frame.</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, getter=isForMainFrameOnly) <span class="built_in">BOOL</span> forMainFrameOnly;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 初始化方法，用于创建WKUserScript对象</span></span><br><span class="line"><span class="comment">// source：JS源代码</span></span><br><span class="line"><span class="comment">// injectionTime：JS注入的时间</span></span><br><span class="line"><span class="comment">// forMainFrameOnly：是否只注入main frame</span></span><br><span class="line">- (instancetype)initWithSource:(<span class="built_in">NSString</span> *)source injectionTime:(WKUserScriptInjectionTime)injectionTime forMainFrameOnly:(<span class="built_in">BOOL</span>)forMainFrameOnly;</span><br></pre></td></tr></table></figure>
+<h2 id="WKUserScriptInjectionTime"><a href="#WKUserScriptInjectionTime" class="headerlink" title="WKUserScriptInjectionTime"></a>WKUserScriptInjectionTime</h2><figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef <span class="type">NS_ENUM</span>(<span class="type">NSInteger</span>, <span class="type">WKUserScriptInjectionTime</span>) &#123;</span><br><span class="line">    <span class="type">WKUserScriptInjectionTimeAtDocumentStart</span>,</span><br><span class="line">    <span class="type">WKUserScriptInjectionTimeAtDocumentEnd</span></span><br><span class="line">&#125; <span class="type">NS_ENUM_AVAILABLE</span>(10_10, 8_0);</span><br></pre></td></tr></table></figure>
+<p>它是一个枚举类型，只有在文档开始加载时注入和加载结束时注入。</p>
+<h2 id="WKWebsiteDataStore存储的Web内容"><a href="#WKWebsiteDataStore存储的Web内容" class="headerlink" title="WKWebsiteDataStore存储的Web内容"></a>WKWebsiteDataStore存储的Web内容</h2><p>iOS9.0以后才能使用这个类。它是代表webview不同的数据类型，包括cookies、disk、memory caches、WebSQL、IndexedDB数据库和本地存储。</p>
+<p>从这里看，要优化Webview好像可以通过它来实现，不过要求iOS9.0以上才能使用。现在6.0都没有抛弃的我，从来不能考虑这种最新的。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 默认数据存储</span></span><br><span class="line">+ (WKWebsiteDataStore *)defaultDataStore;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 返回非持久化存储，数据不会写入文件系统</span></span><br><span class="line">+ (WKWebsiteDataStore *)nonPersistentDataStore;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 已经不可用</span></span><br><span class="line">- (instancetype)init <span class="built_in">NS_UNAVAILABLE</span>;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 只读属性，表示是否是持久化存储</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, getter=isPersistent) <span class="built_in">BOOL</span> persistent;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 获取所有web内容的数据存储类型集，比如cookies、disk等</span></span><br><span class="line">+ (<span class="built_in">NSSet</span>&lt;<span class="built_in">NSString</span> *&gt; *)allWebsiteDataTypes;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 获取某些指定数据存储类型的数据</span></span><br><span class="line">- (<span class="keyword">void</span>)fetchDataRecordsOfTypes:(<span class="built_in">NSSet</span>&lt;<span class="built_in">NSString</span> *&gt; *)dataTypes completionHandler:(<span class="keyword">void</span> (^)(<span class="built_in">NSArray</span>&lt;WKWebsiteDataRecord *&gt; *))completionHandler;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 删除某些指定类型的数据</span></span><br><span class="line">- (<span class="keyword">void</span>)removeDataOfTypes:(<span class="built_in">NSSet</span>&lt;<span class="built_in">NSString</span> *&gt; *)dataTypes forDataRecords:(<span class="built_in">NSArray</span>&lt;WKWebsiteDataRecord *&gt; *)dataRecords completionHandler:(<span class="keyword">void</span> (^)(<span class="keyword">void</span>))completionHandler;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 删除某些指定类型的数据且修改日期是指定的日期</span></span><br><span class="line">- (<span class="keyword">void</span>)removeDataOfTypes:(<span class="built_in">NSSet</span>&lt;<span class="built_in">NSString</span> *&gt; *)websiteDataTypes modifiedSince:(<span class="built_in">NSDate</span> *)date completionHandler:(<span class="keyword">void</span> (^)(<span class="keyword">void</span>))completionHandler;</span><br><span class="line"> </span><br><span class="line">```` </span><br><span class="line">所有的dataTypes是下面这些系统所定义的：</span><br><span class="line"></span><br><span class="line">```` </span><br><span class="line">WK_EXTERN <span class="built_in">NSString</span> * <span class="keyword">const</span> WKWebsiteDataTypeDiskCache <span class="built_in">NS_AVAILABLE</span>(<span class="number">10</span>_11, <span class="number">9</span>_0);</span><br><span class="line"> </span><br><span class="line">WK_EXTERN <span class="built_in">NSString</span> * <span class="keyword">const</span> WKWebsiteDataTypeMemoryCache <span class="built_in">NS_AVAILABLE</span>(<span class="number">10</span>_11, <span class="number">9</span>_0);</span><br><span class="line"> </span><br><span class="line">WK_EXTERN <span class="built_in">NSString</span> * <span class="keyword">const</span> WKWebsiteDataTypeOfflineWebApplicationCache <span class="built_in">NS_AVAILABLE</span>(<span class="number">10</span>_11, <span class="number">9</span>_0);</span><br><span class="line"> </span><br><span class="line">WK_EXTERN <span class="built_in">NSString</span> * <span class="keyword">const</span> WKWebsiteDataTypeCookies <span class="built_in">NS_AVAILABLE</span>(<span class="number">10</span>_11, <span class="number">9</span>_0);</span><br><span class="line"> </span><br><span class="line">WK_EXTERN <span class="built_in">NSString</span> * <span class="keyword">const</span> WKWebsiteDataTypeSessionStorage <span class="built_in">NS_AVAILABLE</span>(<span class="number">10</span>_11, <span class="number">9</span>_0);</span><br><span class="line"> </span><br><span class="line">WK_EXTERN <span class="built_in">NSString</span> * <span class="keyword">const</span> WKWebsiteDataTypeLocalStorage <span class="built_in">NS_AVAILABLE</span>(<span class="number">10</span>_11, <span class="number">9</span>_0);</span><br><span class="line"> </span><br><span class="line">WK_EXTERN <span class="built_in">NSString</span> * <span class="keyword">const</span> WKWebsiteDataTypeWebSQLDatabases <span class="built_in">NS_AVAILABLE</span>(<span class="number">10</span>_11, <span class="number">9</span>_0);</span><br><span class="line"> </span><br><span class="line">WK_EXTERN <span class="built_in">NSString</span> * <span class="keyword">const</span> WKWebsiteDataTypeIndexedDBDatabases <span class="built_in">NS_AVAILABLE</span>(<span class="number">10</span>_11, <span class="number">9</span>_0);</span><br></pre></td></tr></table></figure>
+<h2 id="WKWebsiteDataRecord"><a href="#WKWebsiteDataRecord" class="headerlink" title="WKWebsiteDataRecord"></a>WKWebsiteDataRecord</h2><p>iOS9.0以后才可用。</p>
+<p>website的数据存储记录类型，它只有两个属性：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通常是域名</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *displayName;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 存储的数据类型集</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSSet</span>&lt;<span class="built_in">NSString</span> *&gt; *dataTypes;</span><br><span class="line">```` </span><br><span class="line"> </span><br><span class="line"><span class="meta">## WKSelectionGranularity选择粒度</span></span><br><span class="line"></span><br><span class="line">它表示在webview上选择内容的粒度，只有下面这两种类型：</span><br><span class="line"></span><br><span class="line">```` </span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">NS_ENUM</span>(<span class="built_in">NSInteger</span>, WKSelectionGranularity) &#123;</span><br><span class="line">    WKSelectionGranularityDynamic,</span><br><span class="line">    WKSelectionGranularityCharacter,</span><br><span class="line">&#125; <span class="built_in">NS_ENUM_AVAILABLE_IOS</span>(<span class="number">8</span>_0);</span><br><span class="line">```` </span><br><span class="line">它是用于webview内容交互时选择内容的粒度类型设置。比如说，当使用WKSelectionGranularityDynamic时，而所选择的内容是单个块，这时候granularity可能会是单个字符；当所选择的web内容不限制于某个块时，granularity可能会是单个块。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">## WKNavigationDelegate</span></span><br><span class="line"></span><br><span class="line">```` </span><br><span class="line"><span class="class"><span class="keyword">@protocol</span> <span class="title">WKNavigationDelegate</span> &lt;<span class="title">NSObject</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">@optional</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 决定导航的动作，通常用于处理跨域的链接能否导航。WebKit对跨域进行了安全检查限制，不允许跨域，因此我们要对不能跨域的链接</span></span><br><span class="line"><span class="comment">// 单独处理。但是，对于Safari是允许跨域的，不用这么处理。</span></span><br><span class="line"><span class="comment">// 这个是决定是否Request</span></span><br><span class="line">- (<span class="keyword">void</span>)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(<span class="keyword">void</span> (^)(WKNavigationActionPolicy))decisionHandler;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 决定是否接收响应</span></span><br><span class="line"><span class="comment">// 这个是决定是否接收response</span></span><br><span class="line"><span class="comment">// 要获取response，通过WKNavigationResponse对象获取</span></span><br><span class="line">- (<span class="keyword">void</span>)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(<span class="keyword">void</span> (^)(WKNavigationResponsePolicy))decisionHandler;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 当main frame的导航开始请求时，会调用此方法</span></span><br><span class="line">- (<span class="keyword">void</span>)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 当main frame接收到服务重定向时，会回调此方法</span></span><br><span class="line">- (<span class="keyword">void</span>)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(null_unspecified WKNavigation *)navigation;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 当main frame开始加载数据失败时，会回调</span></span><br><span class="line">- (<span class="keyword">void</span>)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(<span class="built_in">NSError</span> *)error;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 当main frame的web内容开始到达时，会回调</span></span><br><span class="line">- (<span class="keyword">void</span>)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 当main frame导航完成时，会回调</span></span><br><span class="line">- (<span class="keyword">void</span>)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 当main frame最后下载数据失败时，会回调</span></span><br><span class="line">- (<span class="keyword">void</span>)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(<span class="built_in">NSError</span> *)error;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 这与用于授权验证的API，与AFN、UIWebView的授权验证API是一样的</span></span><br><span class="line">- (<span class="keyword">void</span>)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(<span class="built_in">NSURLAuthenticationChallenge</span> *)challenge completionHandler:(<span class="keyword">void</span> (^)(<span class="built_in">NSURLSessionAuthChallengeDisposition</span> disposition, <span class="built_in">NSURLCredential</span> *__nullable credential))completionHandler;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 当web content处理完成时，会回调</span></span><br><span class="line">- (<span class="keyword">void</span>)webViewWebContentProcessDidTerminate:(WKWebView *)webView <span class="built_in">NS_AVAILABLE</span>(<span class="number">10</span>_11, <span class="number">9</span>_0);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<h2 id="WKNavigationActionPolicy"><a href="#WKNavigationActionPolicy" class="headerlink" title="WKNavigationActionPolicy"></a>WKNavigationActionPolicy</h2><p>导航动作决定策略：</p>
+ <figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef <span class="type">NS_ENUM</span>(<span class="type">NSInteger</span>, <span class="type">WKNavigationActionPolicy</span>) &#123;</span><br><span class="line">    <span class="type">WKNavigationActionPolicyCancel</span>,</span><br><span class="line">    <span class="type">WKNavigationActionPolicyAllow</span>,</span><br><span class="line">&#125; <span class="type">NS_ENUM_AVAILABLE</span>(10_10, 8_0);</span><br></pre></td></tr></table></figure>
+<p>它是枚举类型，只有Cancel和Allow这两种。设置为Cancel就是不允许导航，就不会跳转链接。</p>
+<h2 id="WKNavigationResponsePolicy"><a href="#WKNavigationResponsePolicy" class="headerlink" title="WKNavigationResponsePolicy"></a>WKNavigationResponsePolicy</h2><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="built_in">NS_ENUM</span>(<span class="built_in">NSInteger</span>, WKNavigationResponsePolicy) &#123;</span><br><span class="line">    WKNavigationResponsePolicyCancel,</span><br><span class="line">    WKNavigationResponsePolicyAllow,</span><br><span class="line">&#125; <span class="built_in">NS_ENUM_AVAILABLE</span>(<span class="number">10</span>_10, <span class="number">8</span>_0);</span><br><span class="line">```` </span><br><span class="line"><span class="meta">## WKNavigationResponse</span></span><br><span class="line"></span><br><span class="line">WKNavigationResponse是导航响应类，通过它可以获取相关响应的信息：</span><br><span class="line"></span><br><span class="line">```` </span><br><span class="line"><span class="built_in">NS_CLASS_AVAILABLE</span>(<span class="number">10</span>_10, <span class="number">8</span>_0)</span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">WKNavigationResponse</span> : <span class="title">NSObject</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 是否是main frame</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, getter=isForMainFrame) <span class="built_in">BOOL</span> forMainFrame;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 获取响应response</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSURLResponse</span> *response;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 是否显示MIMEType</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>) <span class="built_in">BOOL</span> canShowMIMEType;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line">```` </span><br><span class="line">只有接收响应与不接收响应两种。</span><br><span class="line"></span><br><span class="line"><span class="meta">## WKNavigationAction</span></span><br><span class="line"></span><br><span class="line">WKNavigationAction对象包含关于导航的action的信息，用于make policy decisions。它只有以下几个属性：</span><br><span class="line"></span><br><span class="line">```` </span><br><span class="line"><span class="comment">// 正在请求的导航的frame</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, <span class="keyword">copy</span>) WKFrameInfo *sourceFrame;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 目标frame，如果这是新的window，它会是nil</span></span><br><span class="line"><span class="keyword">@property</span> (nullable, <span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, <span class="keyword">copy</span>) WKFrameInfo *targetFrame;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 导航类型，如下面的小标题WKNavigationType</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>) WKNavigationType navigationType;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 导航的请求</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSURLRequest</span> *request;</span><br><span class="line"> </span><br><span class="line">```` </span><br><span class="line"> </span><br><span class="line"><span class="meta">## WKNavigationType</span></span><br><span class="line"></span><br><span class="line">WKNavigationType类型是枚举类型，它的可选值如下:</span><br><span class="line"></span><br><span class="line">```` </span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">NS_ENUM</span>(<span class="built_in">NSInteger</span>, WKNavigationType) &#123;</span><br><span class="line"><span class="comment">// 链接已经点击</span></span><br><span class="line">    WKNavigationTypeLinkActivated,</span><br><span class="line">    <span class="comment">// 表单提交</span></span><br><span class="line">    WKNavigationTypeFormSubmitted,</span><br><span class="line">    <span class="comment">// 前进、后退</span></span><br><span class="line">    WKNavigationTypeBackForward,</span><br><span class="line">    <span class="comment">// 重新载入</span></span><br><span class="line">    WKNavigationTypeReload,</span><br><span class="line">    <span class="comment">// 表单重新提交</span></span><br><span class="line">    WKNavigationTypeFormResubmitted,</span><br><span class="line">    <span class="comment">// 其它</span></span><br><span class="line">    WKNavigationTypeOther = <span class="number">-1</span>,</span><br><span class="line">&#125; <span class="built_in">NS_ENUM_AVAILABLE</span>(<span class="number">10</span>_10, <span class="number">8</span>_0);</span><br><span class="line">```` </span><br><span class="line"><span class="meta">## WKUIDelegate</span></span><br><span class="line"></span><br><span class="line">```` </span><br><span class="line"><span class="class"><span class="keyword">@protocol</span> <span class="title">WKUIDelegate</span> &lt;<span class="title">NSObject</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">@optional</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 创建新的webview</span></span><br><span class="line"><span class="comment">// 可以指定配置对象、导航动作对象、window特性</span></span><br><span class="line">- (nullable WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// webview关闭时回调</span></span><br><span class="line">- (<span class="keyword">void</span>)webViewDidClose:(WKWebView *)webView <span class="built_in">NS_AVAILABLE</span>(<span class="number">10</span>_11, <span class="number">9</span>_0);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 调用JS的alert()方法</span></span><br><span class="line">- (<span class="keyword">void</span>)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(<span class="built_in">NSString</span> *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(<span class="keyword">void</span> (^)(<span class="keyword">void</span>))completionHandler;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 调用JS的confirm()方法</span></span><br><span class="line">- (<span class="keyword">void</span>)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(<span class="built_in">NSString</span> *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(<span class="keyword">void</span> (^)(<span class="built_in">BOOL</span> result))completionHandler;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 调用JS的prompt()方法</span></span><br><span class="line">- (<span class="keyword">void</span>)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(<span class="built_in">NSString</span> *)prompt defaultText:(nullable <span class="built_in">NSString</span> *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(<span class="keyword">void</span> (^)(<span class="built_in">NSString</span> * __nullable result))completionHandler;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line">```` </span><br><span class="line"><span class="meta">## WKBackForwardList</span></span><br><span class="line"></span><br><span class="line">WKBackForwardList表示webview中可以前进或者后退的页面列表。其声明如下：</span><br><span class="line"></span><br><span class="line">```` </span><br><span class="line"><span class="built_in">NS_CLASS_AVAILABLE</span>(<span class="number">10</span>_10, <span class="number">8</span>_0)</span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">WKBackForwardList</span> : <span class="title">NSObject</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 当前正在显示的item（页面）</span></span><br><span class="line"><span class="keyword">@property</span> (nullable, <span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, <span class="keyword">strong</span>) WKBackForwardListItem *currentItem;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 后一页，如果没有就是nil</span></span><br><span class="line"><span class="keyword">@property</span> (nullable, <span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, <span class="keyword">strong</span>) WKBackForwardListItem *backItem;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 前一页，如果没有就是nil</span></span><br><span class="line"><span class="keyword">@property</span> (nullable, <span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, <span class="keyword">strong</span>) WKBackForwardListItem *forwardItem;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 根据下标获取某一个页面的item</span></span><br><span class="line">- (nullable WKBackForwardListItem *)itemAtIndex:(<span class="built_in">NSInteger</span>)index;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 可以进行goback操作的页面列表</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSArray</span>&lt;WKBackForwardListItem *&gt; *backList;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 可以进行goforward操作的页面列表</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">readonly</span>, <span class="keyword">copy</span>) <span class="built_in">NSArray</span>&lt;WKBackForwardListItem *&gt; *forwardList;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<h2 id="WKBackForwardListItem"><a href="#WKBackForwardListItem" class="headerlink" title="WKBackForwardListItem"></a>WKBackForwardListItem</h2><p>页面导航前进、后退列表项：</p>
+<pre><code>NS_CLASS_AVAILABLE(10_10, 8_0)
+@interface WKBackForwardListItem : NSObject
+
+// 该页面的URL
+@property (readonly, copy) NSURL *URL;
+
+// 该页面的title
+@property (nullable, readonly, copy) NSString *title;
+
+// 初始请求该item的请求的URL
+@property (readonly, copy) NSURL *initialURL;
+
+@end
+</code></pre><p> 参考：<a href="http://www.henishuo.com/wkwebview-objc/" target="_blank" rel="external">API</a> <a href="http://www.henishuo.com/wkwebview-js-h5-oc/" target="_blank" rel="external">实战</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/22/runloop/" rel="next" title="RunLoop">
+                <i class="fa fa-chevron-left"></i> RunLoop
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="zhumuzhi" />
+          <p class="site-author-name" itemprop="name">zhumuzhi</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#WKWebView-API"><span class="nav-number">1.</span> <span class="nav-text">WKWebView API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WKProcessPool内容处理池"><span class="nav-number">2.</span> <span class="nav-text">WKProcessPool内容处理池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WKUserContentController内容交互控制器"><span class="nav-number">3.</span> <span class="nav-text">WKUserContentController内容交互控制器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WKUserScript"><span class="nav-number">4.</span> <span class="nav-text">WKUserScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WKUserScriptInjectionTime"><span class="nav-number">5.</span> <span class="nav-text">WKUserScriptInjectionTime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WKWebsiteDataStore存储的Web内容"><span class="nav-number">6.</span> <span class="nav-text">WKWebsiteDataStore存储的Web内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WKWebsiteDataRecord"><span class="nav-number">7.</span> <span class="nav-text">WKWebsiteDataRecord</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WKNavigationActionPolicy"><span class="nav-number">8.</span> <span class="nav-text">WKNavigationActionPolicy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WKNavigationResponsePolicy"><span class="nav-number">9.</span> <span class="nav-text">WKNavigationResponsePolicy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WKBackForwardListItem"><span class="nav-number">10.</span> <span class="nav-text">WKBackForwardListItem</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhumuzhi</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
